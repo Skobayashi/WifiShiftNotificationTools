@@ -1,0 +1,14 @@
+{
+    "name": "adult/wifi_shift_notification_tools",
+    "description":" ",
+    "keywords":[
+    ],
+    "config":{
+        "bin-dir": "bin"
+    },
+    "require": {
+        "aws/aws-sdk-php": "*",
+        "satooshi/php-coveralls": "*",
+        "app2641/emerald-beans": "*"
+    }
+}
