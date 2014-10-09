@@ -1,9 +1,13 @@
 <?php
 
 
-use WSN\Api;
+use WSN\Test\MockTestCase;
 
-class ApiTest extends PHPUnit_Framework_TestCase
+use Acm\Acm;
+use WSN\Api;
+use WSN\Aws\Ses;
+
+class ApiTest extends MockTestCase
 {
 
     /**
@@ -19,6 +23,12 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
 
     /**
+     * @var Ses
+     **/
+    private $ses;
+
+
+    /**
      * @return void
      **/
     public function setUp ()
@@ -27,7 +37,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
         $methods = array('setTime', 'check');
         $this->shift = $this->getMock('WSN\Shift');
-        $this->shift->expects($this->any())->method('setTime');
+        $this->shift->expects($this->any())->method('setTime', 'getShiftUser');
     }
 
 
@@ -46,5 +56,31 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
         $this->api->setShift($this->shift);
         $this->api->sendWifiShiftNoticeMail();
+    }
+
+
+    /**
+     * @test
+     * @large
+     * @group api-send-shift-notice-mail
+     * @group api
+     */
+    public function シフト事前通知メールの送信 ()
+    {
+        $this->shift->expects($this->any())
+            ->method('check')
+            ->will($this->returnValue(true));
+
+        $this->shift->expects($this->any())
+            ->method('getShiftUser')
+            ->will($this->returnValue('小林'));
+
+        $this->ses = $this->getMock('WSN\Aws\Ses', array('sendEmail'), array($this->getSesMock()));
+
+        $this->api->setShift($this->shift);
+        $this->api->setSes($this->ses);
+        $result = $this->api->sendWifiShiftNoticeMail();
+
+        $this->assertTrue($result);
     }
 }

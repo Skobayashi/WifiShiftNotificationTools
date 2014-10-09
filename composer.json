@@ -9,6 +9,7 @@
     "require": {
         "aws/aws-sdk-php": "*",
         "satooshi/php-coveralls": "*",
-        "app2641/emerald-beans": "*"
+        "app2641/emerald-beans": "*",
+        "app2641/aws-client-manager": "*"
     }
 }

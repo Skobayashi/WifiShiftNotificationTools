@@ -4,8 +4,45 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0156ec6bd1a38e17a2d26760d17eb0bf",
+    "hash": "bc9ca2898ad6ff43a2d8f51f783d6bfe",
     "packages": [
+        {
+            "name": "app2641/aws-client-manager",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/app2641/AwsClientManagerForPHP.git",
+                "reference": "d97380ffd09ed8f2cc20ea5dd841818b917c8fc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/app2641/AwsClientManagerForPHP/zipball/d97380ffd09ed8f2cc20ea5dd841818b917c8fc8",
+                "reference": "d97380ffd09ed8f2cc20ea5dd841818b917c8fc8",
+                "shasum": ""
+            },
+            "require": {
+                "aws/aws-sdk-php": "*",
+                "php": ">=5.3",
+                "satooshi/php-coveralls": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Acm": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "app2641",
+                    "homepage": "http://app2641.com"
+                }
+            ],
+            "time": "2014-09-22 02:54:22"
+        },
         {
             "name": "app2641/emerald-beans",
             "version": "0.1",
